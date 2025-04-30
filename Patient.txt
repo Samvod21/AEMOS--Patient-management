@@ -1,0 +1,4 @@
+Samuel	23	emergency	2
+Rediet	22	emergency	2
+Melat	21	emergency	2
+Mike	24	normal	1

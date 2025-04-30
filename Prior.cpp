@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <cstring>
 using namespace std;
 
 struct Pat{
@@ -44,7 +46,49 @@ void display(){
     cout << endl;
 }
 
+void read(){
+    ifstream f("Patient.txt");
+    char line[500];
+
+    if(f.is_open()){
+        while(f.getline(line, sizeof(line))){
+            char *name = strtok(line, "\t");
+            char *age = strtok(nullptr, "\t");
+            char *type = strtok(nullptr, "\t");
+            char *prior = strtok(nullptr, "\t");
+
+            if(name && age && type && prior){
+                int page = atoi(age);
+                int p = atoi(prior);
+
+                Enqueue(name, page, type, p);
+            }else{
+                cout << "Missing columns in some rows" << endl;
+            }
+        }
+        f.close();
+    }else{
+        cout << "Error on opening the file" << endl;
+    }
+}
+
+void Write(){
+    ofstream o("Patient.txt");
+    Pat* temp = front;
+
+    if(o.is_open()){
+        while(temp != nullptr){
+            o << temp->name << '\t' << temp->age << '\t' << temp->type << '\t' << temp->p << endl;
+            temp = temp->next;
+        }
+        o.close();
+    }else{
+        cout << "Error on opening the file" << endl;
+    }
+}
+
 int main(){
+    read();
     string name, type;
     int age, p, choice;
 
@@ -75,6 +119,7 @@ int main(){
         }
         
         else if(choice == 3){
+            Write();
             break;
         }
         
