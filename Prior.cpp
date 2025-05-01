@@ -87,6 +87,16 @@ void Write(){
     }
 }
 
+void peek(){
+    Pat *temp = front;
+    front = front->next;
+
+    cout << "Name" << '\t' << "Age" << '\t' << "Type" << endl;
+    cout << temp->name << '\t' << temp->age << '\t' << temp->type << endl;
+
+    delete temp;
+}
+
 int main(){
     read();
     string name, type;
@@ -95,7 +105,8 @@ int main(){
     while(true){
         cout << "1. Add patient" << endl;
         cout << "2. Patient list" << endl;
-        cout << "3. Exit" << endl;
+        cout << "3. Next" << endl;
+        cout << "4. Exit" << endl;
         cin >> choice;
 
         if(choice == 1){
@@ -117,8 +128,12 @@ int main(){
         else if(choice == 2){
             display();
         }
-        
+
         else if(choice == 3){
+            peek();
+        }
+        
+        else if(choice == 4){
             Write();
             break;
         }
