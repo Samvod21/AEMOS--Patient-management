@@ -1,3 +1,3 @@
-Rediet	22	emergency	2
-Melat	21	emergency	2
-Mike	24	normal	1
+sometwo	93	9403	alem	Emergency
+somethree	12	20943	lafto	Emergency
+someone	100	203948	ADDIS	Urgent
